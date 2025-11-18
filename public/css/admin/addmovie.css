@@ -1,0 +1,146 @@
+/* --- Import a cool font --- */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+/* --- Theme Colors --- */
+:root {
+    --primary-red: #E50914; /* A bright, cinematic red */
+    --dark-bg: #141414;     /* Deep dark background */
+    --card-bg: #222222;     /* Form background */
+    --text-light: #f5f5f5;   /* Bright text */
+    --text-dark: #888;      /* Muted text / placeholders */
+    --input-bg: #333333;    /* Input field background */
+}
+
+/* --- Basic Page Reset & Styling --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--dark-bg);
+    color: var(--text-light);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* --- The Form Container --- */
+.movie-form-container {
+    width: 100%;
+    max-width: 600px;
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    padding: 40px;
+    border-top: 5px solid var(--primary-red);
+}
+
+/* --- Form Title --- */
+.form-title {
+    font-size: 2.5em;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 30px;
+    color: var(--text-light);
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+/* --- Form Grouping (Label + Input) --- */
+.form-group {
+    margin-bottom: 25px;
+    position: relative;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.9em;
+    font-weight: 500;
+    color: var(--text-light);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* --- Unique Input Styling --- */
+.form-input,
+.form-textarea {
+    width: 100%;
+    background-color: var(--input-bg);
+    border: 2px solid transparent; /* Transparent border to prevent layout shift on focus */
+    border-radius: 8px;
+    padding: 15px;
+    font-size: 1em;
+    color: var(--text-light);
+    transition: all 0.3s ease;
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+    color: var(--text-dark);
+}
+
+/* --- The "Unique" Focus Effect --- */
+.form-input:focus,
+.form-textarea:focus {
+    outline: none;
+    border-color: var(--primary-red); /* Red border on focus */
+    box-shadow: 0 0 15px rgba(229, 9, 20, 0.3); /* Red glow on focus */
+    background-color: #111; /* Even darker bg on focus */
+}
+
+/* Specific styling for the textarea */
+.form-textarea {
+    min-height: 120px;
+    resize: vertical; /* Allow user to resize vertically */
+}
+
+/* --- The Submit Button --- */
+.submit-btn {
+    width: 100%;
+    padding: 15px;
+    background: var(--primary-red);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 1.2em;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(229, 9, 20, 0.3);
+}
+
+.submit-btn:hover {
+    background: #b70710; /* Slightly darker red on hover */
+    transform: translateY(-2px); /* Slight lift effect */
+    box-shadow: 0 8px 20px rgba(229, 9, 20, 0.4);
+}
+/* --- Validation Error Styling --- */
+
+/* This styles the error message text */
+.error-text {
+    color: var(--primary-red); /* Use the theme's red color */
+    font-size: 0.9em;
+    font-weight: 500;
+    display: block; /* Make it appear on its own line */
+    margin-top: 8px; /* Add some space from the input */
+}
+
+/* This adds a red border to the input field that has the error */
+.form-input.is-invalid,
+.form-textarea.is-invalid {
+    border-color: var(--primary-red);
+}
+
+/* We also want the red border to appear on focus for invalid fields */
+.form-input.is-invalid:focus,
+.form-textarea.is-invalid:focus {
+    border-color: var(--primary-red);
+    box-shadow: 0 0 15px rgba(229, 9, 20, 0.3); /* Keep the red glow */
+}

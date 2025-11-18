@@ -1,0 +1,180 @@
+/* --- Global Reset & Body --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #141414; /* Very dark grey (almost black) */
+    color: #f5f5f5; /* Light grey text */
+    line-height: 1.6;
+}
+
+/* --- Navbar Styling --- */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1a1a1a; /* Off-black for navbar */
+    padding: 1rem 3rem;
+    border-bottom: 3px solid #E50914; /* Netflix-style red accent */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.nav-logo {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #E50914; /* Red logo text */
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    align-items: center;
+    gap: 1.5rem; /* Space between nav items */
+}
+
+.nav-link {
+    color: #f5f5f5;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.nav-link:hover {
+    background-color: #E50914;
+    color: #fff;
+}
+
+/* --- Special Logout Link Styling --- */
+.nav-link-logout {
+    background-color: transparent;
+    border: 1px solid #E50914;
+    color: #E50914;
+}
+
+.nav-link-logout:hover {
+    background-color: #E50914;
+    color: #fff;
+    border-color: #E50914;
+}
+
+/* --- Main Content Styling --- */
+.main-content {
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
+.main-content h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    text-transform: capitalize;
+    color: #fff;
+}
+
+/* --- Button Styling --- */
+.btn {
+    display: inline-block;
+    background-color: #E50914;
+    color: #fff;
+    padding: 0.8rem 2.5rem;
+    font-size: 1.1rem;
+    font-weight: 500;
+    text-decoration: none;
+    border-radius: 5px;
+    border: 2px solid #E50914;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: transparent; /* On hover, become "ghost button" */
+    color: #E50914;
+}
+
+/* --- Card Container --- */
+.card-container {
+    display: grid;
+    /* Responsive grid with a slightly smaller min-width for shorter cards */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem; /* Tighter gap */
+    padding: 1.5rem; /* Tighter padding */
+    max-width: 1400px; /* Optional: limits the max width */
+    margin: 0 auto; /* Centers the container */
+}
+
+/* --- Individual Card Styling --- */
+.show-card {
+    background-color: #1a1a1a; /* Dark background for the card */
+    border-radius: 8px;
+    overflow: hidden; /* Ensures the image corners are rounded */
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column; /* Stacks image, content, and button */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.show-card:hover {
+    transform: translateY(-5px) scale(1.02); /* Lifts the card up slightly */
+    box-shadow: 0 12px 20px rgba(229, 9, 20, 0.3); /* Adds a red glow */
+}
+
+/* --- Card Image (SHORTER) --- */
+.card-image-container {
+    width: 100%;
+    height: 250px; /* This sets the fixed height for the image */
+    overflow: hidden;
+    background-color: #333; /* Placeholder color */
+}
+
+.card-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures image covers the area, cropping if needed */
+}
+
+/* --- Card Content (TIGHTER) --- */
+.card-content {
+    padding: 1rem 1.5rem; /* Reduced top/bottom padding */
+    flex-grow: 1; /* Makes content area fill remaining space */
+    display: flex;
+    flex-direction: column;
+}
+
+.card-title {
+    font-size: 1.3rem; /* Slightly smaller title */
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 0.4rem; /* Reduced margin */
+}
+
+.card-description {
+    font-size: 0.85rem; /* Slightly smaller description text */
+    color: #b3b3b3; 
+    margin-bottom: 1rem; /* Reduced margin */
+    flex-grow: 1; /* Pushes the button to the bottom */
+    
+    /* This clips the text to 2 lines */
+    display: -webkit-box;
+     /* Limit to 2 lines of text */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis; /* Add ... for clipped text */
+}
+
+/* --- Card Button (SMALLER) --- */
+.card-btn {
+    /* Reuses .btn styles but we can override */
+    width: 100%;
+    text-align: center;
+    padding: 0.6rem 2rem; /* Reduced button padding */
+    font-size: 1rem; /* Slightly smaller button text */
+}

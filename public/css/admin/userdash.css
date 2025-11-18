@@ -1,0 +1,392 @@
+/* --- General Body & Theme --- */
+
+:root {
+    --primary-color: #ff0000; /* Pure Red */
+    --primary-hover: #cc0000; /* Darker Red */
+    --secondary-color: #ffd700; /* Gold for score/accent */
+    
+    --background-color: #000000; /* Pure Black */
+    --card-background: #1a1a1a; /* Dark Gray / Off-black */
+    
+    --text-color: #ffffff; /* Pure White */
+    --text-light: #aaaaaa; /* Lighter Gray for subtle text */
+    
+    --font-heading: 'Titillium Web', sans-serif;
+    --font-body: 'Roboto', sans-serif;
+    
+    --border-color: var(--primary-color); /* Primary red for borders */
+    --shadow-glow: 0 0 20px var(--primary-color); /* More intense glow */
+    --button-shadow: 0 0 10px rgba(255,0,0,0.5); /* Subtle button glow */
+}
+
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+/* --- "Red & Black" Navigation Bar --- */
+nav.main-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background-color: var(--card-background);
+    border-bottom: 3px solid var(--border-color); /* Thicker border */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5); /* Added shadow to nav */
+}
+
+.nav-left {
+    display: flex;
+    align-items: center;
+}
+
+.nav-logo {
+    font-family: var(--font-heading);
+    font-size: 2.2em; /* Slightly larger logo */
+    font-weight: 900;
+    color: var(--primary-color);
+    text-decoration: none;
+    margin-right: 30px;
+    text-shadow: 0 0 8px var(--primary-color); /* More pronounced glow */
+    transition: text-shadow 0.3s ease;
+}
+.nav-logo:hover {
+    text-shadow: 0 0 15px var(--primary-color), 0 0 20px rgba(255,0,0,0.8); /* Even more glow on hover */
+}
+
+.nav-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.nav-links li {
+    margin-right: 25px; /* Increased spacing */
+}
+
+.nav-links a {
+    font-family: var(--font-heading);
+    color: var(--text-light);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.15em; /* Slightly larger text */
+    padding: 10px 0;
+    position: relative;
+    transition: color 0.3s ease, text-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--primary-color);
+    text-shadow: 0 0 5px var(--primary-color);
+    transform: translateY(-2px); /* Slight lift on hover */
+}
+.nav-links a::after { /* Underline effect */
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-color);
+    transition: width 0.3s ease-out;
+}
+.nav-links a:hover::after,
+.nav-links a.active::after {
+    width: 100%;
+}
+
+
+.nav-right {
+    display: flex;
+    align-items: center;
+}
+
+/* "Red & Black" Search Bar */
+.search-form {
+    display: flex;
+    align-items: center;
+    background-color: var(--background-color);
+    border-radius: 5px;
+    border: 2px solid var(--border-color); /* Thicker border */
+    margin-right: 20px;
+    overflow: hidden;
+    box-shadow: 0 0 5px rgba(255,0,0,0.3); /* Subtle glow */
+    transition: box-shadow 0.3s ease;
+}
+.search-form:focus-within { /* Glow on focus */
+    box-shadow: 0 0 10px var(--primary-color), 0 0 15px rgba(255,0,0,0.5);
+}
+
+.search-form input[type="text"] {
+    padding: 10px 15px;
+    border: none;
+    background-color: transparent;
+    color: var(--text-color);
+    outline: none;
+    font-family: var(--font-body);
+    font-size: 1em;
+    width: 180px; /* Wider search input */
+}
+.search-form input[type="text"]::placeholder {
+    color: var(--text-light);
+}
+
+.search-form button {
+    padding: 10px 15px;
+    border: none;
+    background-color: var(--primary-color);
+    color: #fff; /* White icon on red */
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+.search-form button:hover {
+     background-color: var(--primary-hover);
+     transform: scale(1.05); /* Slightly enlarge button */
+}
+
+.logout-link {
+    font-family: var(--font-heading);
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 700;
+    padding: 10px 25px; /* Wider padding */
+    border-radius: 5px;
+    border: 2px solid var(--primary-color);
+    background-color: transparent;
+    transition: all 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.logout-link:hover {
+    background-color: var(--primary-color);
+    color: #fff; /* White text on hover */
+    box-shadow: var(--shadow-glow); /* Stronger glow on hover */
+    transform: translateY(-2px); /* Lift effect */
+}
+.logout-link::before { /* Flash effect on hover */
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255,255,255,0.2);
+    transform: skewX(-20deg);
+    transition: left 0.5s ease;
+}
+.logout-link:hover::before {
+    left: 100%;
+}
+/* --- End Navigation Bar --- */
+
+
+/* --- Main Content Area --- */
+.page-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 40px;
+}
+
+h1.page-title {
+    font-family: var(--font-heading);
+    font-size: 3.2em; /* Larger title */
+    font-weight: 900;
+    margin-bottom: 30px;
+    color: var(--text-color);
+    text-shadow: 0 0 10px rgba(255, 0, 0, 0.7), 0 0 15px rgba(255, 0, 0, 0.5); /* Enhanced red shadow */
+    letter-spacing: 1px;
+}
+
+/* --- Featured Movie Slider --- */
+h2.section-title {
+    font-family: var(--font-heading);
+    font-size: 2.5em;
+    font-weight: 900;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+    text-shadow: 0 0 8px var(--primary-color);
+}
+
+.slider-container {
+    position: relative;
+    margin-bottom: 40px;
+}
+
+.movie-slider {
+    display: flex;
+    overflow-x: auto; /* Enable horizontal scrolling */
+    scroll-snap-type: x mandatory; /* Snap to slides */
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    scrollbar-width: none; /* Hide scrollbar (Firefox) */
+    border-radius: 10px;
+    padding: 10px 0; /* Add padding so shadows don't get cut off */
+}
+.movie-slider::-webkit-scrollbar {
+    display: none; /* Hide scrollbar (Chrome, Safari, Opera) */
+}
+
+.slider-card {
+    flex: 0 0 auto;
+    width: 65%; /* Show one large and a piece of the next */
+    margin-right: 20px;
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    scroll-snap-align: start; /* Snap to the start of the element */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+}
+.slider-card:hover {
+    transform: scale(1.02); /* Slight zoom on hover */
+    box-shadow: 0 0 15px var(--primary-color); /* Glow on hover */
+}
+@media (max-width: 768px) {
+    .slider-card {
+        width: 85%; /* Show more of one card on mobile */
+    }
+}
+
+.slider-card-poster {
+    width: 100%;
+    height: 400px; /* Taller for featured */
+    object-fit: cover;
+    display: block;
+}
+
+.slider-card-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 30px 20px;
+    background: linear-gradient(to top, rgba(0,0,0,0.95) 20%, rgba(0,0,0,0));
+}
+
+.slider-card-title {
+    font-family: var(--font-heading);
+    font-size: 2em;
+    font-weight: 700;
+    margin: 0 0 10px 0;
+    color: var(--text-color);
+}
+
+.slider-card-score {
+    font-size: 1.2em;
+    font-weight: 700;
+    color: var(--secondary-color);
+    text-shadow: 0 0 8px var(--secondary-color);
+}
+
+/* Slider Navigation Buttons */
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(26, 26, 26, 0.7); /* Use card-background with alpha */
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
+    font-size: 1.2em;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px rgba(255,0,0,0.3);
+}
+.slider-btn:hover {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    box-shadow: var(--shadow-glow);
+    transform: translateY(-50%) scale(1.05);
+}
+#slide-prev {
+    left: 15px;
+}
+#slide-next {
+    right: 15px;
+}
+/* --- End of Slider CSS --- */
+
+
+/* --- "Glow" Movie Grid --- */
+.movie-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); /* Slightly larger cards */
+    gap: 30px; /* Increased gap */
+}
+
+.movie-card {
+    background: var(--card-background);
+    border-radius: 10px; /* Slightly more rounded */
+    overflow: hidden;
+    transition: all 0.4s ease; /* Slower transition */
+    display: flex;
+    flex-direction: column;
+    border: 2px solid #282828; /* Darker, more visible initial border */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.4); /* Added initial shadow */
+}
+
+.movie-card:hover {
+    transform: translateY(-10px) scale(1.02); /* More pronounced lift and slight scale */
+    border-color: var(--border-color); /* Primary red border on hover */
+    box-shadow: var(--shadow-glow); /* Stronger red glow on hover */
+}
+
+.movie-card-poster {
+    width: 100%;
+    height: 360px; /* Taller posters */
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+}
+.movie-card:hover .movie-card-poster {
+    transform: scale(1.05); /* Slight zoom on poster on hover */
+}
+
+.movie-card-content {
+    padding: 20px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.movie-card-title {
+    font-family: var(--font-heading);
+    font-size: 1.1em; /* Larger title */
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 12px;
+    color: var(--text-color);
+    display: -webkit-box;
+    -webkit-box-orient: vertical;  
+    overflow: hidden;
+    min-height: 50px; /* Fixed height for 2 lines */
+    text-shadow: 0 0 3px rgba(255,255,255,0.1); /* Subtle text shadow */
+}
+
+.movie-card-score {
+    font-size: 0.9em; /* Larger score */
+    font-weight: 700;
+    color: var(--secondary-color); /* Gold for score */
+    margin-top: auto; /* Pushes score to the bottom */
+    text-shadow: 0 0 8px var(--secondary-color); /* Gold glow for score */
+}
+
+.movie-card-score span {
+    font-family: var(--font-body);
+    font-weight: 300;
+    color: var(--text-light);
+    margin-right: 8px;
+    text-shadow: none; /* No shadow for the label */
+}
